@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void share(View view) {
+        ShareParams params = new ShareParams();
+        OnekeyShare.getInstance().share(params);
     }
 }

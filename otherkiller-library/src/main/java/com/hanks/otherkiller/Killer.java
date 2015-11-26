@@ -15,13 +15,28 @@
  */
 package com.hanks.otherkiller;
 import android.content.Context;
+
+import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
+import com.sina.weibo.sdk.api.share.WeiboShareSDK;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 /**
  * add share function to app, one key share
  * <p/>
  * Created by hanks on 15-11-26.
  */
 public class Killer {
-    public void init(Context context) {}
+
+    public void init(Context context) {
+
+        // 微博
+        IWeiboShareAPI mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(context, ConfigKey.WEIBO_APP_KEY);
+        mWeiboShareAPI.registerApp();
+
+        // 微信
+        IWXAPI wxApi = WXAPIFactory.createWXAPI(context, ConfigKey.WX_APP_ID);
+        wxApi.registerApp(ConfigKey.WX_APP_ID);
+    }
 
     public void share(ShareParams params) {
 
