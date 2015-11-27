@@ -57,7 +57,17 @@ public class ShareSDK {
     }
 
     public void share(ShareParams params) {
-
+        switch (params.getPlatform()) {
+            case Platform.PLATFORM_WEIBO:
+                shareWeibo(params);
+                break;
+            case Platform.PLATFORM_WX_FRIEND:
+                shareWechat(0, params);
+                break;
+            case Platform.PLATFORM_WX_TIMELINE:
+                shareWechat(1, params);
+                break;
+        }
     }
 
     private void shareWeibo(ShareParams params) {
@@ -81,8 +91,9 @@ public class ShareSDK {
         }
         mWeiboShareAPI.sendRequest((Activity) context, request, authInfo, token, new WeiboAuthListener() {
             @Override public void onWeiboException(WeiboException arg0) {
-                if(shareListener != null){
-                    shareListener.onError(new WeiboPlatform("微博"), arg0.hashCode(),arg0.getCause());
+                if (shareListener != null) {
+                    shareListener.onError(Platform.PLATFORM_WEIBO, PlatformActionListener.RESULT_ERROR, arg0
+                            .getCause());
                 }
             }
 
@@ -90,13 +101,13 @@ public class ShareSDK {
                 Oauth2AccessToken newToken = Oauth2AccessToken.parseAccessToken(bundle);
                 AccessTokenKeeper.writeAccessToken(context, newToken);
                 if (shareListener != null) {
-                    shareListener.onComplete(new WeiboPlatform(""),200,null);
+                    shareListener.onComplete(Platform.PLATFORM_WEIBO, PlatformActionListener.RESULT_COMPLETE, null);
                 }
             }
 
             @Override public void onCancel() {
                 if (shareListener != null) {
-                    shareListener.onCancel(null,0);
+                    shareListener.onCancel(Platform.PLATFORM_WEIBO, PlatformActionListener.RESULT_CANCEL);
                 }
             }
         });
@@ -105,7 +116,7 @@ public class ShareSDK {
     /**
      * 创建文本消息对象。
      *
-     * @param params
+     * @params 分享对象
      * @return 文本消息对象。
      */
     private TextObject getTextObj(ShareParams params) {
@@ -113,7 +124,6 @@ public class ShareSDK {
         textObject.text = params.getText();
         return textObject;
     }
-
 
     /**
      * 微信分享 （这里仅提供一个分享网页的示例，其它请参看官网示例代码）
@@ -139,7 +149,6 @@ public class ShareSDK {
         wxApi.sendReq(req);
 
     }
-
 
     public void setShareListener(PlatformActionListener shareListener) {
         this.shareListener = shareListener;

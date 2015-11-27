@@ -19,12 +19,16 @@ package com.hanks.otherkiller;
  */
 public class Platform {
 
-    public static final int platform_weibo = 0x50;
-    public static final int platform_wx    = 0x51;
-
-    private final int platfrom;
-
-    public Platform(int platform) {
-        this.platfrom = platform;
-    }
+    /**
+     * sina 微博
+     */
+    public static final int PLATFORM_WEIBO = 0x50;
+    /**
+     * 微信好友
+     */
+    public static final int PLATFORM_WX_FRIEND    = 0x51;
+    /**
+     * 微信朋友圈
+     */
+    public static final int PLATFORM_WX_TIMELINE    = 0x52;
 }

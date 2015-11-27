@@ -17,13 +17,19 @@
 package com.hanks.otherkiller;
 import java.util.HashMap;
 /**
- *
+ * callback for share
+ * <p>
  * Created by hanks on 15-11-26.
  */
 public interface PlatformActionListener {
-    void onComplete(Platform var1, int var2, HashMap<String, Object> var3);
 
-    void onError(Platform var1, int var2, Throwable var3);
+    int RESULT_COMPLETE = 0x200;
+    int RESULT_ERROR    = 0x201;
+    int RESULT_CANCEL   = 0x202;
 
-    void onCancel(Platform var1, int var2);
+    void onComplete(int platform, int code, HashMap<String, Object> var3);
+
+    void onError(int platform, int code, Throwable var3);
+
+    void onCancel(int platform, int code);
 }

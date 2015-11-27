@@ -6,13 +6,17 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ShareSDK shareSDK;
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        shareSDK = new ShareSDK();
+        shareSDK.init(this);
+
     }
 
     public void share(View view) {
-        ShareParams params = new ShareParams();
-        OnekeyShare.getInstance().share(params);
+        shareSDK.share(new ShareParams());
     }
 }

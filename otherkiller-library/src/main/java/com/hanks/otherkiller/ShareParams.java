@@ -15,6 +15,27 @@ public class ShareParams {
     private String site;
     private String siteUrl;
     private Bitmap thumbImage;
+    private int platform;
+
+    /**
+     * 所以平台都需要 text 字段
+     * @param text
+     */
+    public ShareParams(String text) {
+        this.text = text;
+    }
+
+    public int getPlatform() {
+        return platform;
+    }
+
+    /**
+     * 设置要分享的平台
+     * @param platform
+     */
+    public void setPlatform(int platform) {
+        this.platform = platform;
+    }
 
     public Bitmap getThumbImage() {
         return thumbImage;
