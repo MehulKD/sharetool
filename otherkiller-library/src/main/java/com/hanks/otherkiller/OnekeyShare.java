@@ -42,11 +42,10 @@ package com.hanks.otherkiller;
  * // 启动分享GUI<br/>
  * oks.show(this);<br/>
  * </code>
- * <p/>
+ * <p>
  * Created by hanks on 15-11-26.
  */
 public class OnekeyShare {
-
 
     private String title;
     private String titleUrl;
@@ -57,13 +56,6 @@ public class OnekeyShare {
     private String site;
     private String siteUrl;
 
-    private OnekeyShare() {
-
-    }
-
-    public void show() {
-
-    }
 
     /**
      * @param title 标题 印象笔记、邮箱、信息、微信、人人网和QQ空间使用

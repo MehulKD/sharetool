@@ -17,11 +17,14 @@
 package com.hanks.otherkiller;
 /**
  * key
- *
+ * <p>
  * Created by hanks on 15-11-26.
  */
 public class ConfigKey {
-    public static final String WEIBO_APP_KEY = "";
 
     public static final String WX_APP_ID = "";
+
+    public static final String WEIBO_APP_KEY      = "";
+    public static final String WEIBO_REDIRECT_URL = "";
+    public static final String WEIBO_SCOPE        = "";
 }

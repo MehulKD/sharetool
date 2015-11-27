@@ -15,7 +15,16 @@
  */
 package com.hanks.otherkiller;
 /**
- *
  * Created by hanks on 15-11-26.
  */
-public class Platform {}
+public class Platform {
+
+    public static final int platform_weibo = 0x50;
+    public static final int platform_wx    = 0x51;
+
+    private final int platfrom;
+
+    public Platform(int platform) {
+        this.platfrom = platform;
+    }
+}
