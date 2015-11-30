@@ -147,7 +147,6 @@ public class ShareSDK {
         req.message = msg;
         req.scene = flag == 0 ? SendMessageToWX.Req.WXSceneSession : SendMessageToWX.Req.WXSceneTimeline;
         wxApi.sendReq(req);
-
     }
 
     public void setShareListener(PlatformActionListener shareListener) {
